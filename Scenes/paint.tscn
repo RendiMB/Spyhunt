@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://b342l0rv0oe12"]
+
+[ext_resource type="Script" path="res://Scripts/paint.gd" id="1_x41lv"]
+
+[sub_resource type="Curve" id="Curve_cmbxr"]
+_data = [Vector2(0.473684, 0.549451), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[node name="Paint" type="Node2D"]
+script = ExtResource("1_x41lv")
+
+[node name="Color" type="Node2D" parent="."]
+
+[node name="R" type="HSlider" parent="Color"]
+unique_name_in_owner = true
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 61.0
+offset_bottom = 17.0
+max_value = 255.0
+
+[node name="G" type="HSlider" parent="Color"]
+unique_name_in_owner = true
+offset_left = 1.0
+offset_top = 36.0
+offset_right = 61.0
+offset_bottom = 52.0
+max_value = 255.0
+
+[node name="B" type="HSlider" parent="Color"]
+unique_name_in_owner = true
+offset_left = 1.0
+offset_top = 19.0
+offset_right = 61.0
+offset_bottom = 35.0
+max_value = 255.0
+
+[node name="ColorRect" type="ColorRect" parent="Color"]
+offset_left = 67.0
+offset_top = 2.0
+offset_right = 107.0
+offset_bottom = 42.0
+color = Color(0, 0, 0, 1)
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(-126.925, -99.225)
+scale = Vector2(2.975, 5.275)
+points = PackedVector2Array(63, 39)
+width = 20.0
+width_curve = SubResource("Curve_cmbxr")
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+begin_cap_mode = 1
+end_cap_mode = 1
+sharp_limit = 4.0
+round_precision = 14
+
+[connection signal="value_changed" from="Color/R" to="." method="color_changed"]
+[connection signal="value_changed" from="Color/G" to="." method="color_changed"]
+[connection signal="value_changed" from="Color/B" to="." method="color_changed"]
